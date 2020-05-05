@@ -6,39 +6,39 @@ let badgeInfo={}
 let url='https://hackerrank-badges.herokuapp.com/api/'
 
 router.post('/',(req,res)=>{
-    
-    let newurl=url+req.body.hackerrankid
+    let newurl=""
+    newurl=url+req.body.hackerrankid
     newurl=newurl.toLowerCase()
-    
+    //console.log(newurl)
     axios.get(newurl)
         .then(response=>{
-            console.log(response.data)
+            
             if (response.data.status=="OK"){
+                const data=response.data
                 const user = new userInfo({
                     prn_no:req.body.prn_no,
                     hackerRankId:req.body.hackerrankid,
                     full_name:req.body.full_name,
-                    badgeInfo:response.data
-                    
-                    
+                    course:req.body.course,
+                    badgeInfo:data 
                 })
-                // user.save()
-                // .then(()=>{
-                //     console.log("Saved in DB")
-                // })
-                // .catch((err)=>{
-                //     console.log("Error:",err)
-                // })
-                let userResponse=response.data
-                userResponse.error=false
-                userResponse.name=req.body.full_name
-                userResponse.prn=req.body.prn_no
-                res.send(userResponse)
+                
+                 badgeInfo=data
+                 res.status(200).send(badgeInfo)
+                user.save()
+                .then(()=>{
+                    res.status(200).send(badgeInfo)
+                    console.log("Saved in DB")
+                })
+                .catch((err)=>{
+                    console.log("Error:",err)
+
+                })
             }
             else{
                 res.send("0")
             }
-            newurl=""
+            
             
         })
 

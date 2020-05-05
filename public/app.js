@@ -6,17 +6,21 @@ const tableDiv=document.querySelector('.table-div')
 badgeDiv.style.display="none";
 status.style.display="none"
 document.getElementById('no-stars').style.display="block"
-
+let c=0
 $("#hidform").submit(function (e) {
-    badgeDiv.style.display="none";
+    console.log(c)
+    e.preventDefault();
+    c++
+    if(c==1){
+        badgeDiv.style.display="none";
   status.style.display="block"
   status.classList=[]
   status.classList.add("form-text",  "text-center" ,"pt-2")
   status.innerText = "Processing...";
-  e.preventDefault(); // avoid to execute the actual submit of the form.
+   // avoid to execute the actual submit of the form.
 
   var form = $(this);
-  var url = form.attr("action");
+  var url = "../saveinfo";
 
   $.ajax({
     type: "POST",
@@ -74,6 +78,9 @@ $("#hidform").submit(function (e) {
                 status.classList.add("text-danger")
             }
         }
+        c=0
     },
   });
+    }
+    
 });

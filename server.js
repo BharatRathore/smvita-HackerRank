@@ -1,7 +1,7 @@
 const express=require('express')
 const mongoose=require('mongoose')
 
-//const getInfo=require('./routes/getinfo')
+const getInfo=require('./routes/getinfo')
 const saveInfo=require('./routes/saveinfo')
 
 const app=express()
@@ -25,6 +25,7 @@ mongoose.connect(process.env.DB_CONNECTION,
 })
 
 //app.use('/getinfo',getInfo)
+app.use('/getinfo',getInfo)
 app.use('/saveinfo',saveInfo)
 
 

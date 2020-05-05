@@ -4,7 +4,8 @@ const hackerRankdb=mongoose.Schema({
     prn_no:String,
     hackerRankId:String,
     full_name:String,
-    badgeInfo:Object,
+    course:String,
+    badgeInfo:Object
     
 })
 
