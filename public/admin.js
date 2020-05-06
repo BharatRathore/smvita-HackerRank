@@ -1,5 +1,43 @@
 const fetchBtn = document.getElementById("fetch-data");
 const tableBody = document.getElementById("table-body");
+const fetchData=document.querySelector('.fetchdata')
+const loginDiv=document.querySelector('.admin-login')
+const status= document.getElementById("status")
+fetchData.style.display="none"
+//login validations
+let isLogged=false
+$('#login-form').submit(function(e){
+    e.preventDefault()
+    var form = $(this);
+    var url = "../login";
+    status.classList=[]
+    status.classList.add("form-text",  "text-center","m-0")
+    status.innerText = "Processing...";
+    $.ajax({
+      type: "POST",
+      url: url,
+      data: form.serialize(), 
+      success: function (data) {
+        if(data.valid){
+          fetchData.style.display="block"
+          loginDiv.style.display="none"
+        }
+        else{
+          status.innerText = "Wrong ID/Password";
+          if(!status.classList.contains("text-danger")){
+              status.classList.add("text-danger")
+          }
+        }
+      }
+  })
+})
+
+
+
+
+
+
+
 let c = 0;
 fetchBtn.addEventListener("click", (e) => {
   fetchBtn.style.pointerEvents = "none";
