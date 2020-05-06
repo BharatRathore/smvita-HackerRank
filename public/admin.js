@@ -21,6 +21,7 @@ $('#login-form').submit(function(e){
         if(data.valid){
           fetchData.style.display="block"
           loginDiv.style.display="none"
+
         }
         else{
           status.innerText = "Wrong ID/Password";
@@ -40,6 +41,7 @@ $('#login-form').submit(function(e){
 
 let c = 0;
 fetchBtn.addEventListener("click", (e) => {
+  
   fetchBtn.style.pointerEvents = "none";
   tableBody.innerHTML = "";
   fetch("../getinfo")
@@ -47,6 +49,7 @@ fetchBtn.addEventListener("click", (e) => {
       return data.json();
     })
     .then((fulldata) => {
+      
       let bdginfo = {};
       fulldata.forEach((user) => {
         console.log(user);
@@ -67,6 +70,7 @@ fetchBtn.addEventListener("click", (e) => {
         bdginfo[user._id] = user.badgeInfo.badges;
         tableBody.appendChild(tr);
         fetchBtn.style.pointerEvents = "auto";
+        
         tr.addEventListener("click", (e) => {
           let id = $(e.target).siblings()[4].innerText;
           let badgeDetails=bdginfo[id]
@@ -84,9 +88,47 @@ fetchBtn.addEventListener("click", (e) => {
             `
           })
           document.getElementById('bdg-body').innerHTML=html
+          
+          
         });
       });
+    }).then(()=>{
+      $('.mytable').DataTable({
+        order:[[0,'asc']],
+        responsive:true,
+        "columnDefs": [ {
+          "targets": 2,
+          "orderable": false
+          } ],
+        initComplete: function () {
+          this.api().columns(2).every( function () {
+          var column = this;
+          $('.mytable .head .head_hide').html('');
+  
+          var select = $('<select id="formfilter" class="filterdropdown text-white bg-dark"><option value="">'+$(column.header()).text()+'</option></select>')
+              .appendTo( $(column.header()).empty())
+              .on( 'change', function () {
+                  var val = $.fn.dataTable.util.escapeRegex(
+                      $(this).val()
+                  );
+                  column
+                      .search( val ? '^'+val+'$' : '', true, false )
+                      .draw();
+              });
+  
+          column.data().unique().sort().each( function ( d, j ) {
+              select.append( '<option value="'+d+'">'+d+'</option>' )
+          });
+      }
+          )}
+    
+
+
+
+      })
     });
+    
 });
+
 
 
