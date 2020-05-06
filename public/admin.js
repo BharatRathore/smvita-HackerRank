@@ -52,6 +52,7 @@ fetchBtn.addEventListener("click", (e) => {
       
       let bdginfo = {};
       fulldata.forEach((user) => {
+        
         console.log(user);
         let tr = document.createElement("tr");
         tr.classList.add("user-row");
@@ -60,8 +61,8 @@ fetchBtn.addEventListener("click", (e) => {
         tr.style.cursor="pointer"
         tr.innerHTML = `
             <td>${user.prn_no}</td>
-            <td>${user.full_name}</td>
-            <td>${user.course}</td>
+            <td class="caps">${user.full_name}</td>
+            <td class="fcaps">${user.course}</td>
             <td>${user.badgeInfo.totalBadges}</td>
             <td>${user.badgeInfo.totalStars}</td>
             <td class="d-none">${user._id}</td>
