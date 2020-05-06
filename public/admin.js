@@ -5,7 +5,7 @@ const loginDiv=document.querySelector('.admin-login')
 const status= document.getElementById("status")
 fetchData.style.display="none"
 //login validations
-let isLogged=false
+
 $('#login-form').submit(function(e){
     e.preventDefault()
     var form = $(this);
@@ -94,10 +94,12 @@ fetchBtn.addEventListener("click", (e) => {
       });
     }).then(()=>{
       $('.mytable').DataTable({
+        "bDestroy": true,
         order:[[0,'asc']],
         responsive:true,
         "columnDefs": [ {
           "targets": 2,
+          
           "orderable": false
           } ],
         initComplete: function () {
@@ -105,7 +107,7 @@ fetchBtn.addEventListener("click", (e) => {
           var column = this;
           $('.mytable .head .head_hide').html('');
   
-          var select = $('<select id="formfilter" class="filterdropdown text-white bg-dark"><option value="">'+$(column.header()).text()+'</option></select>')
+          var select = $('<select id="formfilter" class="filterdropdown text-white bg-dark"><option value="">Course</option></select>')
               .appendTo( $(column.header()).empty())
               .on( 'change', function () {
                   var val = $.fn.dataTable.util.escapeRegex(
