@@ -13,7 +13,7 @@ router.post('/',(req,res)=>{
             {prn_no:prn},
             {hackerRankId:req.body.hackerrankid}
         ]
-    }).count().then(count=>{
+    }).countDocuments().then(count=>{
         if(count==0){
             newurl=url+req.body.hackerrankid
             newurl=newurl.toLowerCase()

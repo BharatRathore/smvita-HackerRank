@@ -12,7 +12,7 @@ router.post('/',(req,res)=>{
             {userid:userid},
             {password:password}
         ]
-    }).count().then(count=>{
+    }).countDocuments().then(count=>{
         if(count!=0){
             res.send({
                 valid:true
