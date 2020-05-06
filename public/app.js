@@ -29,7 +29,8 @@ $("#hidform").submit(function (e) {
     success: function (data) {
         let tbody=document.getElementById('bdg-body')
         let html=''
-        if(data!=="0") {
+        console.log(data)
+        if(data.error!=="0") {
             document.getElementById('no-stars').style.display="none"
             tableDiv.style.display="block"
             let badgeInfo=data.badges
@@ -70,7 +71,7 @@ $("#hidform").submit(function (e) {
             
           }  
           else{
-              status.innerText="Wrong Userid,Please enter again"
+              status.innerText=data.message
               if(status.classList.contains("text-success")){
                 status.classList.remove("text-success")
             }
