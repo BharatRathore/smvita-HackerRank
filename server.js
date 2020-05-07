@@ -29,4 +29,4 @@ app.use('/getinfo',getInfo)
 app.use('/saveinfo',saveInfo)
 app.use('/login',login)
 
-app.listen(3000)
+app.listen(3000,"0.0.0.0")

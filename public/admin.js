@@ -3,7 +3,12 @@ const tableBody = document.getElementById("table-body");
 const fetchData=document.querySelector('.fetchdata')
 const loginDiv=document.querySelector('.admin-login')
 const status= document.getElementById("status")
+const tablediv=document.querySelector('.table')
+const stdName=document.getElementById('std-name')
+const fetchStatus=document.querySelector('.fetch-status')
+fetchStatus.style.display="none"
 fetchData.style.display="none"
+tablediv.style.display="none"
 //login validations
 
 $('#login-form').submit(function(e){
@@ -41,7 +46,7 @@ $('#login-form').submit(function(e){
 
 let c = 0;
 fetchBtn.addEventListener("click", (e) => {
-  
+  fetchStatus.style.display="block"
   fetchBtn.style.pointerEvents = "none";
   tableBody.innerHTML = "";
   fetch("../getinfo")
@@ -68,32 +73,49 @@ fetchBtn.addEventListener("click", (e) => {
             <td class="d-none">${user._id}</td>
            
            `;
-        bdginfo[user._id] = user.badgeInfo.badges;
+        if(user.badgeInfo.totalBadges >0){
+          bdginfo[user._id] = user.badgeInfo.badges;
+        }
+        else{
+          bdginfo[user._id]={"No Badges earned...":0}
+        }
+        
         tableBody.appendChild(tr);
         fetchBtn.style.pointerEvents = "auto";
         
         tr.addEventListener("click", (e) => {
+          
           let id = $(e.target).siblings()[4].innerText;
+          
           let badgeDetails=bdginfo[id]
+         
+          
           count=1
           let html=""
-          Object.entries(badgeDetails).map(info=>{
-            html+=`
-                <tr>
-                <td>${count++}</td>
-                <td>${info[0]}</td>
-                <td>${info[1]}</td>
-                </tr>
-
-            
-            `
-          })
-          document.getElementById('bdg-body').innerHTML=html
+          if(badgeDetails!="no-stars"){
+            Object.entries(badgeDetails).map(info=>{
+              html+=`
+                  <tr>
+                  <td>${count++}</td>
+                  <td>${info[0]}</td>
+                  <td>${info[1]}</td>
+                  </tr>
+  
+              
+              `
+            })
+          }
           
+          
+          document.getElementById('bdg-body').innerHTML=html
+          stdName.innerText=user.full_name
+          stdName.style.textTransform="capitalize"
           
         });
       });
     }).then(()=>{
+      fetchStatus.style.display="none"
+      tablediv.style.display="block"
       $('.mytable').DataTable({
         "bDestroy": true,
         order:[[0,'asc']],
