@@ -1,13 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>SMVITA HAckerRank</title>
+    <title>SMVITA HackerRank</title>
     <!-- Required meta tags -->
     <meta charset="utf-8" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/css/flag-icon.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
 
     <!-- Bootstrap CSS -->
     <link
@@ -16,15 +18,43 @@
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
+
+    <style>
+      html{
+        height: 100%;
+      }
+      body {
+        
+    position: relative;
+    margin: 0;
+    padding-bottom: 6rem;
+    min-height: 100%;
+    font-family: 'Poppins', sans-serif !important;
+    
+  }
+  footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 6rem;
+    background-color: #efefef;
+    text-align: center;
+  }
+    </style>
   </head>
   <body>
+    <h3 class="text-center bg-secondary text-light m-0 ">SMVITA-HackerRank</h3>
     <nav class="navbar navbar-expand navbar-dark bg-dark">
+      
       <div class="nav navbar-nav">
-        <a class="nav-item nav-link active" href="#"
-          >Student <span class="sr-only">(current)</span></a
+        <a class="nav-item nav-link active mr-3 bg-secondary rounded" href="#"
+          ><i class="fas fa-user-graduate mr-2"> </i>Student <span class="sr-only">(current)</span></a
         >
-        <a class="nav-item nav-link" href="./admin.html">Admin</a>
+        <a class="nav-item nav-link" href="./admin.html"> <i class="fa fa-cog text-white" aria-hidden="true"></i> Admin</a>
       </div>
+      <a href="#" class=" ml-auto"><i class=" fab text-light fa-2x fa-github"></i></a>
+      
     </nav>
     <div class="container">
       <div class="row mt-5">
@@ -35,18 +65,20 @@
             id="hidform"
             class="form-group h-100 shadow rounded p-5"
           >
-            <h5>Enter Following details</h5>
+            <u><h5>Student Registration</h5></u>
+            <small class="text-muted">Please enter correct details as data can't be changed once submitted!</small>
             <input
               type="number"
               min="0"
-              class="form-control mt-3"
+              class="form-control mt-3 mb-2"
               required
               name="prn_no"
               placeholder="Last 3 digits of PRN No."
             />
+            <small class="text-muted">Only the id not whole URL</small>
             <input
               type="text"
-              class="form-control mt-3"
+              class="form-control mb-3"
               required
               name="hackerrankid"
               placeholder="HackerRank ID"
@@ -104,6 +136,11 @@
         </div>
       </div>
     </div>
+    <footer class="footer bg-light  py-1">
+      <div class="container text-center">
+       <p class="text-dark">Created by Bharat Rathore <span class="flag-icon flag-icon-in"> </span></p> 
+      </div>
+    </footer>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

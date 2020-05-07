@@ -5,8 +5,10 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/css/flag-icon.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
     <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.4.6/css/flag-icon.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.16.0/dist/bootstrap-table.min.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.20/datatables.min.css"/>
@@ -24,17 +26,43 @@
    .fcaps{
      text-transform: uppercase;
    }
+
+   html{
+        height: 100%;
+      }
+      body {
+        
+    position: relative;
+    margin: 0;
+    padding-bottom: 6rem;
+    min-height: 100%;
+    font-family: 'Poppins', sans-serif !important;
+    
+  }
+  footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 6rem;
+    background-color: #efefef;
+    text-align: center;
+  }
  </style>
 </head>
   <body>
-    <nav class="navbar navbar-expand navbar-dark bg-dark">
-        <div class="nav navbar-nav">
-          <a class="nav-item nav-link " href="./index.html"
-            >Student</a
-          >
-          <a class="nav-item nav-link active" href="./admin.html">Admin</a>
-        </div>
-      </nav>
+    <h3 class="text-center bg-secondary text-light m-0 ">SMVITA-HackerRank</h3>
+    <nav class="navbar navbar-expand navbar-dark bg-dark sticky-top">
+      
+      <div class="nav navbar-nav ">
+        <a class="nav-item nav-link  mr-3 " href="./index.html"
+          ><i class="fas fa-user-graduate mr-2"> </i>Student <span class="sr-only">(current)</span></a
+        >
+        <a class="nav-item nav-link active bg-secondary rounded" href="#"> <i class="fa fa-cog text-white" aria-hidden="true"></i> Admin</a>
+      </div>
+      <a href="#" class=" ml-auto"><i class=" fab text-light fa-2x fa-github"></i></a>
+      
+    </nav>
       <main>
         <div class="admin-login col-md-3 m-auto">
           <form action="" method="post" id="login-form" class="mt-5 form-group shadow p-5 rounded">
@@ -47,19 +75,23 @@
           <span class="m-0"><small id="status"></small></span>
         </div>
           <div class="container fetchdata mt-5">
-              <div class="header d-flex-column">
+              <div class="header ">
                 <h1 class="text-center">
                     Admin Panel
                 </h1>
-                <div class="d-flex justify-content-center">
-                    
-                        <button type="button" id = "fetch-data" class="btn btn-primary">Fetch All Data</button>
-                        
+                
+                <div class=" d-flex flex-column ">
+                  <div class="div d-flex justify-content-center">
+                    <button type="button" id = "fetch-data" class="btn btn-primary">Fetch All Data</button>
+                  </div>
+                  
+                  <span class="text-center fetch-status text-success">Loading...</span>
                     
                 </div>
                 
               </div>
-              <div class="table  mt-4">
+              
+              <div class="table  mt-4 mb-0">
                   <table class="table table-bordered text-center mytable" >
                       <thead class="table-dark ">
                           <tr>
@@ -83,7 +115,7 @@
             <div class="modal-dialog" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title">Badge Info</h5>
+                  <h5 class="modal-title" id="std-name"></h5>
                   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
@@ -112,6 +144,11 @@
             </div>
           </div>
       </main>
+      <footer class="footer bg-light  py-1">
+        <div class="container text-center">
+         <p class="text-dark">Created by Bharat Rathore <span class="flag-icon flag-icon-in"> </span></p> 
+        </div>
+      </footer>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script
