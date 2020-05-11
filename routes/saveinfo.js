@@ -36,7 +36,7 @@ router.post('/',(req,res)=>{
                         user.save()
                         .then(()=>{
                             res.status(200).send(badgeInfo)
-                            console.log("Saved in DB")
+                            console.log("Saved in DB : "+req.body.full_name)
                         })
                         .catch((err)=>{
                             console.log("Error:",err)
