@@ -6,6 +6,6 @@ Students need to fill the form to provide the HackerRank id ,after which data is
 Admin can then view the badge details of all such students.
  ***
 #### Stack Used ####
-* Frontend - HTML,CSS,JavaScript
+* Frontend - HTML,CSS,JavaScript,Bootstrap
 * Backend - NodeJS , Express
 * Database - MongoDB
