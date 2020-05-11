@@ -10,6 +10,7 @@ fetchStatus.style.display="none"
 fetchData.style.display="none"
 tablediv.style.display="none"
 //login validations
+$.ajaxSetup({ cache: false });
 
 $('#login-form').submit(function(e){
     e.preventDefault()

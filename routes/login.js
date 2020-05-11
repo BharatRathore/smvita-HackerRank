@@ -7,6 +7,7 @@ const router=express.Router()
 router.post('/',(req,res)=>{
     userid=req.body.userid
     password=req.body.password
+    console.log(userid,password)
     login.find({
         $and:[
             {userid:userid},

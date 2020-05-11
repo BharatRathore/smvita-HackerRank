@@ -23,7 +23,7 @@ $("#hidform").submit(function (e) {
 
   var form = $(this);
   var url = "../saveinfo";
-
+  
   $.ajax({
     type: "POST",
     url: url,
