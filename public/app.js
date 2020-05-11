@@ -60,6 +60,14 @@ $("#hidform").submit(function (e) {
                     
                     `
                 })
+                html+=`
+                <tr class="table-secondary">
+                        <td>Total</td>
+                        <td>${data.totalBadges}</td>
+                        <td>${data.totalStars}</td>
+                        </tr>
+
+                `
                 tbody.innerHTML=html
             }
             else{
