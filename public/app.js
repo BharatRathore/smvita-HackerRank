@@ -7,8 +7,10 @@ badgeDiv.style.display="none";
 status.style.display="none"
 document.getElementById('no-stars').style.display="block"
 let c=0
+
 $("#hidform").submit(function (e) {
-    console.log(c)
+    
+    //console.log(c)
     e.preventDefault();
     c++
     if(c==1){
@@ -29,13 +31,13 @@ $("#hidform").submit(function (e) {
     success: function (data) {
         let tbody=document.getElementById('bdg-body')
         let html=''
-        console.log(data)
+        //console.log(data)
         if(data.error!=="0") {
             document.getElementById('no-stars').style.display="none"
             tableDiv.style.display="block"
             let badgeInfo=data.badges
             status.innerText = "Submitted Successfully"
-            console.log(data)
+            //console.log(data)
             if(status.classList.contains("text-danger")){
                 status.classList.remove("text-danger")
             }
@@ -44,7 +46,7 @@ $("#hidform").submit(function (e) {
             }
             let c=1
             name.innerText="Name: "+data.name
-            prn.innerText="PRN no.: "+data.prn
+            prn.innerText="PRN no.: "+document.getElementById('prn-no').value
             
             if(data.totalBadges>0){
                 Object.entries(badgeInfo).map(info=>{

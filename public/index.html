@@ -41,6 +41,12 @@
     background-color: #efefef;
     text-align: center;
   }
+  #hid{
+    text-transform: lowercase;
+  }
+  #name{
+    text-transform: capitalize;
+  }
     </style>
   </head>
   <body>
@@ -69,6 +75,7 @@
             <small class="text-muted">Please enter correct details as data can't be changed once submitted!</small>
             <input
               type="number"
+              id="prn-no"
               min="0"
               class="form-control mt-3 mb-2"
               required
@@ -80,6 +87,7 @@
               type="text"
               class="form-control mb-3"
               required
+              id="hid"
               name="hackerrankid"
               placeholder="HackerRank ID"
             />
@@ -87,6 +95,7 @@
               type="text"
               class="form-control mt-3"
               required
+              id="name"
               name="full_name"
               placeholder="Full Name"
             />
