@@ -47,6 +47,7 @@ $('#login-form').submit(function(e){
 
 let c = 0;
 fetchBtn.addEventListener("click", (e) => {
+  
   fetchStatus.style.display="block"
   fetchBtn.style.pointerEvents = "none";
   tableBody.innerHTML = "";
@@ -62,15 +63,19 @@ fetchBtn.addEventListener("click", (e) => {
         console.log(user);
         let tr = document.createElement("tr");
         tr.classList.add("user-row");
-        tr.setAttribute("data-toggle", "modal");
-        tr.setAttribute("data-target", "#exampleModal");
+        if(!user.githubId){
+          user["githubId"]="None"
+        }
+        // tr.setAttribute("data-toggle", "modal");
+        // tr.setAttribute("data-target", "#exampleModal");
         tr.style.cursor="pointer"
         tr.innerHTML = `
-            <td>${user.prn_no}</td>
-            <td class="caps">${user.full_name}</td>
-            <td class="fcaps">${user.course}</td>
-            <td>${user.badgeInfo.totalBadges}</td>
-            <td>${user.badgeInfo.totalStars}</td>
+            <td data-toggle="modal" data-target="#exampleModal">${user.prn_no}</td>
+            <td data-toggle="modal" data-target="#exampleModal" class="caps">${user.full_name}</td>
+            <td data-toggle="modal" data-target="#exampleModal" class="fcaps">${user.course}</td>
+            <td data-toggle="modal" data-target="#exampleModal">${user.badgeInfo.totalBadges}</td>
+            <td data-toggle="modal" data-target="#exampleModal">${user.badgeInfo.totalStars}</td>
+            <td ><a href="https://github.com/${user.githubId}" " target="_blank" id="gid">${user.githubId}</a></td>
             <td class="d-none">${user._id}</td>
            
            `;
@@ -84,9 +89,10 @@ fetchBtn.addEventListener("click", (e) => {
         tableBody.appendChild(tr);
         fetchBtn.style.pointerEvents = "auto";
         
+        
         tr.addEventListener("click", (e) => {
-          
-          let id = $(e.target).siblings()[4].innerText;
+          if(e.srcElement.id!=="gid"){
+            let id = $(e.target).siblings()[5].innerText;
           
           let badgeDetails=bdginfo[id]
          
@@ -111,6 +117,8 @@ fetchBtn.addEventListener("click", (e) => {
           document.getElementById('bdg-body').innerHTML=html
           stdName.innerText=user.full_name
           stdName.style.textTransform="capitalize"
+          }
+          
           
         });
       });
