@@ -7,6 +7,8 @@ const hackerRankdb=mongoose.Schema({
     course:String,
     badgeInfo:Object
     
-})
+    
+},
+{timestamps: true} )
 
 module.exports=mongoose.model('hackerRankdb',hackerRankdb)
