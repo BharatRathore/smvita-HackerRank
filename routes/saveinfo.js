@@ -26,6 +26,7 @@ router.post('/',(req,res)=>{
                         const user = new userInfo({
                             prn_no:req.body.prn_no,
                             hackerRankId:req.body.hackerrankid,
+                            githubId:req.body.githubid,
                             full_name:req.body.full_name,
                             course:req.body.course,
                             badgeInfo:data 
