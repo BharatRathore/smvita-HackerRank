@@ -75,6 +75,7 @@ fetchBtn.addEventListener("click", (e) => {
             <td data-toggle="modal" data-target="#exampleModal" class="fcaps">${user.course}</td>
             <td data-toggle="modal" data-target="#exampleModal">${user.badgeInfo.totalBadges}</td>
             <td data-toggle="modal" data-target="#exampleModal">${user.badgeInfo.totalStars}</td>
+            <td ><a href="https://hackerrank.com/${user.hackerRankId}" " target="_blank" id="gid">${user.hackerRankId}</a></td>
             <td ><a href="https://github.com/${user.githubId}" " target="_blank" id="gid">${user.githubId}</a></td>
             <td class="d-none">${user._id}</td>
            
@@ -92,7 +93,7 @@ fetchBtn.addEventListener("click", (e) => {
         
         tr.addEventListener("click", (e) => {
           if(e.srcElement.id!=="gid"){
-            let id = $(e.target).siblings()[5].innerText;
+            let id = $(e.target).siblings()[6].innerText;
           
           let badgeDetails=bdginfo[id]
          
