@@ -4,6 +4,7 @@ const mongoose=require('mongoose')
 const getInfo=require('./routes/getinfo')
 const saveInfo=require('./routes/saveinfo')
 const login=require('./routes/login')
+const studentLogin=require('./routes/studentLogin')
 const app=express()
 
 let port = process.env.PORT || 3000;
@@ -30,6 +31,7 @@ mongoose.connect(process.env.DB_CONNECTION,
 app.use('/getinfo',getInfo)
 app.use('/saveinfo',saveInfo)
 app.use('/login',login)
+app.use('/studentLogin',studentLogin)
 
 app.listen(port, () => {
     console.log("Running on port " + port);
