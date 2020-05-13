@@ -47,6 +47,10 @@
   #name{
     text-transform: capitalize;
   }
+  .form-control:disabled{
+    background-color:transparent !important;
+    border: none;
+  }
     </style>
   </head>
   <body>
@@ -80,26 +84,55 @@
         
         <div class="col-md-5 shadow p-3 rounded h-50">
             <h3 class="text-center">Profile Details</h3>
+            <form action="" id="save-details-form">
+              
+            
           <table class="table " id="std-profile">
             <tr>
                 <th>Name:</th>
-                <td > <input type="text"  disabled class="form-control ml-0 edit" ></td>
+                <td > <input type="text"  name="name" disabled class="form-control ml-0 edit" ></td>
             </tr>
             <tr>
                 <th>Prn no:</th>
-                <td > <input type="text" disabled class="form-control ml-0 edit" value=""></td>
+                <td > <input type="text" name="prn_no" disabled class="form-control ml-0 edit" value=""></td>
             </tr>
             <tr>
                 <th>HackerRank ID</th>
-                <td > <input type="text" disabled class="form-control ml-0 edit" value=""></td>
+                <td > <input type="text" name="hid" disabled class="form-control ml-0 edit" value=""></td>
             </tr>
             <tr>
                 <th>Github id</th>
-                <td > <input type="text" disabled  class="form-control ml-0 edit" value=""</td>
+                <td > <input type="text" name="gid" disabled  class="form-control ml-0 edit" value=""</td>
             </tr>
+            <tr>
+              <th>Password</th>
+              <td > 
+                
+                <div class="input-group">
+                  <input type="password" name="password" disabled class="form-control pwd edit" id="paswd" value="iamapassword">
+                  <span class="input-group-btn">
+                    <button class="btn btn-default border" onclick="showHidePassword()" type="button"><i id="eye" class="fas fa-eye"></i></button>
+                  </span>          
+                </div>
+                
+              </td>
+              
+          </tr>
+          <tr>
+            
+        </tr>
+          <!-- <tr>
+            <th>Github id</th>
+            <td > <input type="text" disabled  class="form-control ml-0 edit" value=""</td>
+        </tr> -->
               
           </table>
-          <button class="btn btn-warning" onclick="editInfo()">Edit Info</button>
+          <input type="hidden" name="id" class="edit">
+          <input class="btn btn-warning" type="button" onclick="editInfo()" value="Edit">
+        <input class="btn btn-success ml-3" type="submit" id="save-btn"   value="Save Changes">
+        
+        
+      </form>
         </div>
         
       <div class="table-div col-md-7 ">

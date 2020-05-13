@@ -11,14 +11,14 @@ router.post('/',(req,res)=>{
     login.find({
         $and:[
             {prn_no:prn_no},
-            {hackerRankId:password}
+            {password:password}
         ]
     }).countDocuments().then(count=>{
         if(count!=0){
             login.find({
                 $and:[
                     {prn_no:prn_no},
-                    {hackerRankId:password}
+                    {password:password}
                 ]
             }).then(doc=>{
                 res.send({valid:true,data:doc[0]})

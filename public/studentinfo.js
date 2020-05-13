@@ -7,12 +7,12 @@ const stdProfile=document.getElementById('std-profile')
 noStars.style.display="none"
 let html=''
 let c=1
-
+let isLoggedIn=false
 
 $('#student-login-form').submit(function(e){
     e.preventDefault()
-    var form = $(this);
-    var url = "../studentLogin";
+    let form = $(this);
+    let url = "../studentLogin";
     status.classList=[]
     status.classList.add("form-text",  "text-center","m-0")
     status.innerText = "Processing...";
@@ -23,11 +23,14 @@ $('#student-login-form').submit(function(e){
       success: function (data) {
           let studentInfo=data.data
         if(data.valid){
+            isLoggedIn=true
             const profileDetails=document.querySelectorAll('.edit')
             profileDetails[0].setAttribute("value",studentInfo.full_name)
             profileDetails[1].setAttribute("value",studentInfo.prn_no)
             profileDetails[2].setAttribute("value",studentInfo.hackerRankId)
             profileDetails[3].setAttribute("value",studentInfo.githubId)
+            profileDetails[4].setAttribute("value",studentInfo.password)
+            profileDetails[5].setAttribute("value",studentInfo._id)
 
             console.log(profileDetails)
             stdProfileHtml(studentInfo)
@@ -81,7 +84,7 @@ stdProfile.innerHTML+=html
 }
 
 
-
+document.getElementById('save-btn').style.display="none"
 
 function editInfo(){
     const edits=document.querySelectorAll('.edit')
@@ -89,4 +92,48 @@ function editInfo(){
     edits.forEach(edit=>{
         edit.removeAttribute("disabled")
     })
+    document.getElementById('save-btn').style.display="inline"
 }
+
+function showHidePassword(){
+    const $pwd = $("#paswd");
+    if ($pwd.attr('type') === 'password') {
+        $pwd.attr('type', 'text');
+        document.getElementById('eye').classList.toggle("fa-eye-slash")
+        document.getElementById('eye').classList.toggle("fa-eye")
+
+    } else {
+        $pwd.attr('type', 'password');
+        document.getElementById('eye').classList.toggle("fa-eye-slash")
+        document.getElementById('eye').classList.toggle("fa-eye")
+    }
+}
+
+
+//Save Details
+
+$('#save-details-form').submit(function(e){
+    e.preventDefault()
+    if(isLoggedIn){
+        
+        let form = $(this);
+        let url = "../updatedetails";
+        console.log(form.serialize())
+        $.ajax({
+            type: "PUT",
+            url: url,
+            data: form.serialize(),
+            
+            success: function (data) {
+    
+                console.log(data)
+    
+    
+            },
+            error: function(jqXHR,exception){
+                console.log(jqXHR.status)
+            }
+        })
+    }
+    
+})

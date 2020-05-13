@@ -12,7 +12,7 @@ const dbupdatecron=require('../models/saveinfo')
 let url='https://hackerrank-badges.herokuapp.com/api/'
 const axios=require('axios')
 
-cron.schedule('30 * * * *',dbupdate) //DAILY updates at 12:30 AM UTC (6:00 AM IST)
+cron.schedule('* * * * *',dbupdate) //DAILY updates at 12:30 AM UTC (6:00 AM IST)
 
     function dbupdate(){
         console.log("Update started :" + new Date())
@@ -46,9 +46,7 @@ cron.schedule('30 * * * *',dbupdate) //DAILY updates at 12:30 AM UTC (6:00 AM IS
                         {useFindAndModify:false,new:true}
                         ,function(err, doc) {
                          console.log(a.hackerRankId + " Updated at " + new Date());
-                         if(i==l-1){
-                             
-                         }
+                         
                          
                      },
                      

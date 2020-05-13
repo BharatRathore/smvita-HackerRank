@@ -1,16 +1,22 @@
 const express=require('express')
 const router=express.Router()
 const userInfo=require('../models/saveinfo')
+require('dotenv/config')
 
-
-router.get('/',(req,res)=>{
-    userInfo.find()
+router.get('/:key',(req,res)=>{
+    if(req.params.key==process.env.key){
+        userInfo.find()
     .then(alldata=>{
         res.json(alldata)
     })
     .catch(err=>{
         console.log(err)
     })
+    }
+    else{
+        res.send("Please login")
+    }
+    
 })
 
 module.exports=router

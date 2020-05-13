@@ -3,6 +3,7 @@ const mongoose=require('mongoose')
 const login=require('../models/login')
 const axios=require('axios')
 const router=express.Router()
+require('dotenv/config')
 
 router.post('/',(req,res)=>{
     userid=req.body.userid
@@ -16,7 +17,8 @@ router.post('/',(req,res)=>{
     }).countDocuments().then(count=>{
         if(count!=0){
             res.send({
-                valid:true
+                valid:true,
+                key:process.env.key
             })
         }
         else{

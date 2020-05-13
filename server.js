@@ -3,6 +3,7 @@ const mongoose=require('mongoose')
 //require('./cron/dbupdate')
 const getInfo=require('./routes/getinfo')
 const saveInfo=require('./routes/saveinfo')
+const updateDetails=require('./routes/updatedetails')
 const login=require('./routes/login')
 const studentLogin=require('./routes/studentLogin')
 const app=express()
@@ -32,6 +33,7 @@ app.use('/getinfo',getInfo)
 app.use('/saveinfo',saveInfo)
 app.use('/login',login)
 app.use('/studentLogin',studentLogin)
+app.use('/updatedetails',updateDetails)
 
 app.listen(port, () => {
     console.log("Running on port " + port);
