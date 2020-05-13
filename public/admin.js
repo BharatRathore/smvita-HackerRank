@@ -9,6 +9,7 @@ const fetchStatus=document.querySelector('.fetch-status')
 fetchStatus.style.display="none"
 fetchData.style.display="none"
 tablediv.style.display="none"
+let isLoggedIn=false
 //login validations
 $.ajaxSetup({ cache: false });
 
@@ -27,6 +28,7 @@ $('#login-form').submit(function(e){
         if(data.valid){
           fetchData.style.display="block"
           loginDiv.style.display="none"
+            isLoggedIn=true
 
         }
         else{
@@ -47,8 +49,8 @@ $('#login-form').submit(function(e){
 
 let c = 0;
 fetchBtn.addEventListener("click", (e) => {
-  
-  fetchStatus.style.display="block"
+  if(isLoggedIn){
+      fetchStatus.style.display="block"
   fetchBtn.style.pointerEvents = "none";
   tableBody.innerHTML = "";
   fetch("../getinfo")
@@ -162,6 +164,8 @@ fetchBtn.addEventListener("click", (e) => {
 
       })
     });
+  }
+  
     
 });
 
