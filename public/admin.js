@@ -10,6 +10,7 @@ fetchStatus.style.display="none"
 fetchData.style.display="none"
 tablediv.style.display="none"
 let isLoggedIn=false
+let key=""
 //login validations
 $.ajaxSetup({ cache: false });
 
@@ -29,7 +30,7 @@ $('#login-form').submit(function(e){
           fetchData.style.display="block"
           loginDiv.style.display="none"
             isLoggedIn=true
-
+            key=data.key
         }
         else{
           status.innerText = "Wrong ID/Password";
@@ -53,7 +54,7 @@ fetchBtn.addEventListener("click", (e) => {
       fetchStatus.style.display="block"
   fetchBtn.style.pointerEvents = "none";
   tableBody.innerHTML = "";
-  fetch("../getinfo")
+  fetch("../getinfo"+key)
     .then((data) => {
       return data.json();
     })
