@@ -1,10 +1,10 @@
 const express=require('express')
 const router=express.Router()
 const userInfo=require('../models/saveinfo')
-
+require('dotenv/config')
 
 router.get('/:key',(req,res)=>{
-    if(req.params.key==proces.env.key){
+    if(req.params.key==process.env.key){
         userInfo.find()
     .then(alldata=>{
         res.json(alldata)
