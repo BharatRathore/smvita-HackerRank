@@ -19,13 +19,14 @@ router.post('/',(req,res)=>{
     }).countDocuments().then(count=>{
         if(count!=0){
             res.send({
-                valid:true
+                valid:true,
+                key:process.env.key
             })
         }
         else{
             res.send({
                 valid:false,
-                key:process.env.key
+                
             })
         }
     })
