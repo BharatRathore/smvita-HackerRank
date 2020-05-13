@@ -54,7 +54,7 @@ fetchBtn.addEventListener("click", (e) => {
       fetchStatus.style.display="block"
   fetchBtn.style.pointerEvents = "none";
   tableBody.innerHTML = "";
-  fetch("../getinfo"+key)
+  fetch("../getinfo/"+key)
     .then((data) => {
       return data.json();
     })
