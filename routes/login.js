@@ -3,6 +3,9 @@ const mongoose=require('mongoose')
 const login=require('../models/login')
 const axios=require('axios')
 const router=express.Router()
+require('dotenv/config')
+
+
 
 router.post('/',(req,res)=>{
     userid=req.body.userid
@@ -21,7 +24,8 @@ router.post('/',(req,res)=>{
         }
         else{
             res.send({
-                valid:false
+                valid:false,
+                key:process.env.key
             })
         }
     })
