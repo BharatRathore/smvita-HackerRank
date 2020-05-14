@@ -12,7 +12,8 @@ router.post('/',(req,res)=>{
         $or:[
             {prn_no:prn},
             {hackerRankId:req.body.hackerrankid}
-        ]
+        ],
+        $and:[{course:req.body.course}]
     }).countDocuments().then(count=>{
         if(count==0){
             newurl=url+req.body.hackerrankid
