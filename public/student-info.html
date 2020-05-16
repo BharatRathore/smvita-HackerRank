@@ -58,12 +58,19 @@
     <nav class="navbar navbar-expand navbar-dark bg-dark">
       
       <div class="nav navbar-nav">
-        <a class="nav-item nav-link active mr-3 bg-secondary rounded" href="#"
-          ><i class="fas fa-user-graduate mr-2"> </i>Student <span class="sr-only">(current)</span></a
+        <a class="nav-item nav-link  mr-3  rounded" href="./index.html"
+          ><i class="fas fa-user-graduate mr-2"> </i>Register <span class="sr-only">(current)</span></a
         >
-        <a class="nav-item nav-link" href="./admin.html"> <i class="fa fa-cog text-white" aria-hidden="true"></i> Admin</a>
+        <a class="nav-item nav-link active bg-secondary mr-3  rounded" href="#"
+          ><i class="fas fa-user mr-2"> </i>Student Login </a
+        >
+        
       </div>
-      <a href="https://github.com/BharatRathore/smvita-HackerRank" target="_blank" class=" ml-auto"><i class=" fab text-light fa-2x fa-github"></i></a>
+      <div class="nav navbar-nav ml-auto">
+        
+        <a class="nav-item nav-link " href="./admin.html"> <i class="fa fa-cog text-white" aria-hidden="true"></i> Admin</a>
+         </div>
+      
       
     </nav>
     <div class="container ">
@@ -73,6 +80,11 @@
                     <form  method="post" id="student-login-form" class="form-group mt-3">
                     <input type="text" required class="form-control mt-3" name="prn_no" id="prn_no" placeholder="PRN_NO.">
                     <input type="password" required class="form-control mt-3" name="password" id="password" placeholder="Password">
+                    <small class="form-text text-muted mt-2">Select course</small>
+            <select name="course" required class="form-control" id="">
+              <option class="form-control" value="DAC">DAC</option>
+              <option value="DBDA">DBDA</option>
+            </select>
                     <input type="submit" class="form-control mt-3 btn btn-success" value="Login">
                 </form>
                 <span class="m-0"><small id="status"></small></span>
@@ -82,7 +94,7 @@
     
     <div  class="row dashboard d-none">
         
-        <div class="col-md-5 shadow p-3 rounded h-50">
+        <div class="col-md-5 shadow p-3 rounded ">
             <h3 class="text-center">Profile Details</h3>
             <form action="" id="save-details-form">
               
@@ -90,26 +102,26 @@
           <table class="table " id="std-profile">
             <tr>
                 <th>Name:</th>
-                <td > <input type="text"  name="name" disabled class="form-control ml-0 edit" ></td>
+                <td > <input type="text" required name="name" disabled class="form-control ml-0 edit" ></td>
             </tr>
             <tr>
                 <th>Prn no:</th>
-                <td > <input type="text" name="prn_no" disabled class="form-control ml-0 edit" value=""></td>
+                <td > <input type="number" min=0 required name="prn_no" disabled class="form-control ml-0 edit" value=""></td>
             </tr>
             <tr>
                 <th>HackerRank ID</th>
-                <td > <input type="text" name="hid" disabled class="form-control ml-0 edit" value=""></td>
+                <td > <input type="text" required name="hid" disabled class="form-control ml-0 edit" value=""></td>
             </tr>
             <tr>
                 <th>Github id</th>
-                <td > <input type="text" name="gid" disabled  class="form-control ml-0 edit" value=""</td>
+                <td > <input type="text" required name="gid" disabled  class="form-control ml-0 edit" value=""</td>
             </tr>
             <tr>
               <th>Password</th>
               <td > 
                 
                 <div class="input-group">
-                  <input type="password" name="password" disabled class="form-control pwd edit" id="paswd" value="iamapassword">
+                  <input type="password" name="password" required disabled class="form-control pwd edit" id="paswd" value="iamapassword">
                   <span class="input-group-btn">
                     <button class="btn btn-default border" onclick="showHidePassword()" type="button"><i id="eye" class="fas fa-eye"></i></button>
                   </span>          
@@ -132,7 +144,12 @@
         <input class="btn btn-success ml-3" type="submit" id="save-btn"   value="Save Changes">
         
         
+        
       </form>
+      <div class="text-center">
+        <span id="update-status" class="ml-auto"> </span>
+      </div>
+     
         </div>
         
       <div class="table-div col-md-7 ">
@@ -151,9 +168,7 @@
                 
               </tbody>
             </table>
-            <button class="btn btn-primary">
-                    Refresh
-            </button>
+           
           </div>
         
       </div>
