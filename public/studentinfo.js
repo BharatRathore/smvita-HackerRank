@@ -4,6 +4,7 @@ const login=document.querySelector('.student-login')
 const tbody=document.getElementById('bdg-body')
 const noStars=document.getElementById('no-stars')
 const stdProfile=document.getElementById('std-profile')
+const updStatus=document.getElementById('update-status')
 noStars.style.display="none"
 let html=''
 let c=1
@@ -32,13 +33,13 @@ $('#student-login-form').submit(function(e){
             profileDetails[4].setAttribute("value",studentInfo.password)
             profileDetails[5].setAttribute("value",studentInfo._id)
 
-            console.log(profileDetails)
-            stdProfileHtml(studentInfo)
+            
+            
             status.innerText = "";
-            console.log(data)
+            //console.log(data)
             dashboard.classList.toggle('d-none')
             login.style.display="none"
-            console.log(studentInfo.badgeInfo.totalBadges)
+            //console.log(studentInfo.badgeInfo.totalBadges)
             if(studentInfo.badgeInfo.totalBadges>0){
                 Object.entries(studentInfo.badgeInfo.badges).map(info=>{
                     html+=`
@@ -76,12 +77,7 @@ $('#student-login-form').submit(function(e){
   })
 })
 
-function stdProfileHtml(stdInfo){
-    let html=`
-    
-    `
-stdProfile.innerHTML+=html
-}
+
 
 
 document.getElementById('save-btn').style.display="none"
@@ -115,10 +111,12 @@ function showHidePassword(){
 $('#save-details-form').submit(function(e){
     e.preventDefault()
     if(isLoggedIn){
-        
+        updStatus.classList=[]
+        updStatus.classList.add("text-center")
+        updStatus.innerText="Processing..."
         let form = $(this);
         let url = "../updatedetails";
-        console.log(form.serialize())
+        
         $.ajax({
             type: "PUT",
             url: url,
@@ -126,7 +124,16 @@ $('#save-details-form').submit(function(e){
             
             success: function (data) {
     
-                console.log(data)
+                if(data.valid){
+                    updStatus.innerText=data.message
+                    updStatus.classList=[]
+                    updStatus.classList.add("text-success","text-center")
+                }
+                else{
+                    updStatus.innerText=data.message
+                    updStatus.classList=[]
+                    updStatus.classList.add("text-danger","text-center")
+                }
     
     
             },

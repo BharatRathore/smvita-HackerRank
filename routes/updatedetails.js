@@ -1,11 +1,11 @@
 const express=require('express')
 const router=express.Router()
 const userInfo=require('../models/saveinfo')
-const axios=require('axios')
-let badgeInfo={}
+
 
 router.put('/',async (req,res)=>{
     let c=await userInfo.find({_id:{$nin:req.body.id},
+        course:req.body.course,
         $or:[
             {prn_no:req.body.prn_no},
             {hackerRankId:req.body.hid},
@@ -28,6 +28,7 @@ router.put('/',async (req,res)=>{
                     console.log(err)
                 }
                 else{
+                    console.log(req.body.name + " Updated")
                     res.send({
                         valid:true,
                         message:"Updated Successfully"
