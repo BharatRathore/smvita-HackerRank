@@ -12,7 +12,7 @@ const dbupdatecron=require('../models/saveinfo')
 let url='https://hackerrank-badges.herokuapp.com/api/'
 const axios=require('axios')
 
-cron.schedule('6 * * * *',dbupdate) //DAILY updates at 12:30 AM UTC (6:00 AM IST)
+cron.schedule('59 * * * *',dbupdate) //DAILY updates at 12:30 AM UTC (6:00 AM IST)
 
     function dbupdate(){
         console.log("Update started :" + new Date())
