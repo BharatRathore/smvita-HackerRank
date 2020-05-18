@@ -64,7 +64,7 @@ fetchBtn.addEventListener("click", (e) => {
         let bdginfo = {};
         fulldata.forEach((user) => {
           
-          console.log(user);
+          //console.log(user);
           let tr = document.createElement("tr");
           tr.classList.add("user-row");
           if(!user.githubId){
@@ -130,7 +130,31 @@ fetchBtn.addEventListener("click", (e) => {
       }).then(()=>{
         fetchStatus.style.display="none"
         tablediv.style.display="block"
-        $('.mytable').DataTable({
+       let x= $('.mytable').DataTable({
+        dom:"<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>>" +
+            "<'row'<'col-sm-12'tr>>" +
+            "<'row'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>><'d-flex justify-content-center mt-3' B>",
+        //dom:'<"d-flex justify-content-center"B><"d-flex justify-content-around mt-5"lf><t><ip>',
+        buttons: [
+          {
+            extend: 'pdf',
+            exportOptions: {
+            columns: [ 0, 1, 2, 3, 4 ,5,6] //Your Colume value those you want
+                }
+              },
+          {
+         extend: 'print',
+         exportOptions: {
+         columns: [ 0, 1, 2, 3, 4 ,5,6] //Your Colume value those you want
+             }
+           },
+           {
+            extend: 'excel',
+            exportOptions: {
+            columns: [ 0, 1, 2, 3, 4,5,6 ] //Your Colume value those you want
+           }
+         },
+       ],
           "bDestroy": true,
           order:[[0,'asc']],
           responsive:true,
@@ -139,7 +163,9 @@ fetchBtn.addEventListener("click", (e) => {
             
             "orderable": false
             } ],
+            
           initComplete: function () {
+            
             this.api().columns(2).every( function () {
             var column = this;
             $('.mytable .head .head_hide').html('');
@@ -165,6 +191,8 @@ fetchBtn.addEventListener("click", (e) => {
   
   
         })
+        
+        
       });
   }
   
