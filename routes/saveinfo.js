@@ -9,6 +9,7 @@ router.post('/',(req,res)=>{
     let newurl=""
     let prn=req.body.prn_no
     userInfo.find({
+        
         $or:[
             {prn_no:prn},
             {hackerRankId:req.body.hackerrankid}
@@ -30,7 +31,8 @@ router.post('/',(req,res)=>{
                             githubId:req.body.githubid,
                             full_name:req.body.full_name,
                             course:req.body.course,
-                            badgeInfo:data 
+                            badgeInfo:data,
+                            password:req.body.hackerrankid
                         })
                         
                          badgeInfo=data

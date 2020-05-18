@@ -5,8 +5,6 @@ const axios=require('axios')
 const router=express.Router()
 require('dotenv/config')
 
-
-
 router.post('/',(req,res)=>{
     userid=req.body.userid
     password=req.body.password

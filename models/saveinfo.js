@@ -6,7 +6,8 @@ const hackerRankdb=mongoose.Schema({
     githubId:String,
     full_name:String,
     course:String,
-    badgeInfo:Object
+    badgeInfo:Object,
+    password:String
     
     
 },
