@@ -51,6 +51,19 @@
     background-color:transparent !important;
     border: none;
   }
+  .eye{
+    border: 1px solid #E6E9EC;
+    border-left: none;
+    border-radius: 0;;
+    box-shadow: none !important;
+  }
+  #paswd{
+    border: 1px solid #E6E9EC;
+    border-right: none;
+    box-shadow: none !important;
+
+  }
+  
     </style>
   </head>
   <body>
@@ -118,12 +131,12 @@
             </tr>
             <tr>
               <th>Password</th>
-              <td > 
+              <td >   
                 
                 <div class="input-group">
                   <input type="password" name="password" required disabled class="form-control pwd edit" id="paswd" value="iamapassword">
-                  <span class="input-group-btn">
-                    <button class="btn btn-default border" onclick="showHidePassword()" type="button"><i id="eye" class="fas fa-eye"></i></button>
+                  <span class="input-group-btn ">
+                    <button class="btn btn-default eye" onclick="showHidePassword()" type="button"><i id="eye" class="fas fa-eye"></i></button>
                   </span>          
                 </div>
                 
