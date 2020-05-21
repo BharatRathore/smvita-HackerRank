@@ -90,8 +90,12 @@
         <div class="row d-flex  justify-content-center mt-5 ">
             <div class="col-md-4 shadow p-4 student-login">
                     <h5>Student Login</h5>
+                    <small class="text-center text-muted">
+                      Log in to view your badge details or change profile details. <br> Your HackerRank ID is your default password, you can change your password once you log in.
+                    </small>
+
                     <form  method="post" id="student-login-form" class="form-group mt-3">
-                    <input type="text" required class="form-control mt-3" name="prn_no" id="prn_no" placeholder="PRN_NO.">
+                    <input type="text" required class="form-control mt-3" name="prn_no" id="prn_no" placeholder="PRN_NO. with which you registered">
                     <input type="password" required class="form-control mt-3" name="password" id="password" placeholder="Password">
                     <small class="form-text text-muted mt-2">Select course</small>
             <select name="course" required class="form-control" id="">
@@ -100,7 +104,8 @@
             </select>
                     <input type="submit" class="form-control mt-3 btn btn-success" value="Login">
                 </form>
-                <span class="m-0"><small id="status"></small></span>
+                <span class="m-0 text-white"><small id="status">Status</small></span>
+                
             </div>
             
         </div>

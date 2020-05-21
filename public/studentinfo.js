@@ -15,7 +15,7 @@ $('#student-login-form').submit(function(e){
     let form = $(this);
     let url = "../studentLogin";
     status.classList=[]
-    status.classList.add("form-text",  "text-center","m-0")
+    status.classList.add("form-text",  "text-center","m-0","text-primary")
     status.innerText = "Processing...";
     $.ajax({
       type: "POST",
