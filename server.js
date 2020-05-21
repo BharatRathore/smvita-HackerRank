@@ -1,6 +1,6 @@
 const express=require('express')
 const mongoose=require('mongoose')
-//require('./cron/dbupdate')
+require('./cron/dbupdate')
 const getInfo=require('./routes/getinfo')
 const saveInfo=require('./routes/saveinfo')
 const updateDetails=require('./routes/updatedetails')
